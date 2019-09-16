@@ -1,4 +1,4 @@
-/**
+﻿/**
  * webpack 配置文件
  * webpack 打包会自动使用 webpack.config.js 作为其配置文件去打包
  * 将 webpack 配置规则写到一个对象中直接导出
@@ -10,6 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const webpack = require('webpack')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+// const uglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   /**
@@ -18,6 +19,12 @@ module.exports = {
   entry: './src/main.js',
 
   plugins: [
+
+
+	// 用于丑化代码, 需要先安装 npm i uglifyjs-webpack-plugin@1.1.1 --save-dev
+/*
+*  new uglifyJsPlugin()
+*/
     /**
      * 打包之前先清除 dist 目录
      */
@@ -178,4 +185,10 @@ module.exports = {
       }
     ]
   }
+  resolve: {
+	alias: {
+	'vue&': 'vue/dist/vue.esm.js' // 需要runtime-compalier的时候
+}
+}
+
 }
