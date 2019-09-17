@@ -5,18 +5,32 @@
 </template>
 
 <script>
-  export default {
-    name: 'tabbar',
+export default {
+  name: 'tabbar',
+  data() {
+    return {
+    }
+  },
 
-  }
-</script>
+  components: {},
 
-<style scoped>
-.tabbar {
-  display: flex;
-  position: fixed;
-  right: 0;
-  left: 0;
-  bottom: 0;
+  computed: {},
+
+
+
+  methods: {}
 }
+
+</script>
+<style scoped>
+  .tabbar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 50px;
+    text-align: center;
+    background-color: #f6f6f6;
+  }
 </style>

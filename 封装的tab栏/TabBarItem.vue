@@ -1,28 +1,48 @@
 <template>
-  <div class="tabbar-item">
-    <slot class="test" name="item-pic"></slot>
-    <slot name="item-text"></slot>  
+  <div class="tabbaritem" @click="handleRedir">
+    <div class="pic">
+      <slot  v-if="!isactive" name="pic">
+      </slot>
+      <slot v-if="isactive" name="pic-active">
+      </slot>
+    </div>
+    <div class="txt">
+      <slot name="txt"></slot>
+    </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'tabbar',
+export default {
+  name: 'ddf',
+  data() {
+    return {
+      // isactive: false
+    }
+  },
+  props: {
+    path: {
+      type: String
+    },
+  },
+  computed: {
+    isactive () {
+      return this.path.indexOf (this.$route.path) != -1
+    }
+  },
 
+  components: {},
+
+  methods: {
+    handleRedir () {
+      this.$router.replace(this.path)
+    }
   }
-</script>
-
-<style scoped>
-.tabbar-item {
-  display: flex;
-  position: fixed;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  color: #fcc;
 }
-.test {
-  color: red;
-  /* font-size: 200px; */
+
+</script>
+<style  scoped>
+.tabbaritem {
+  flex: 1;
 }
 </style>
