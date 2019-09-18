@@ -1,0 +1,6 @@
+var rs;
+        var reg = /([\u4E00-\u9FA5]|[0-9]){4}/g,
+        rs = data[index].orgName.match(reg);
+        console.log(rs);
+        rs.push(data[index].orgName.substring(rs.join('').length));
+        rs = rs.join('\n');
