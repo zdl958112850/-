@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="home">
     <!-- <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/> -->
@@ -79,3 +79,5 @@ export default {
   }
 }
 </script>
+
+https://www.cnblogs.com/dcapple/p/8529250.html
