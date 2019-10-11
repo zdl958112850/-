@@ -1,0 +1,15 @@
+ /**获取到当前的位置 */
+
+    getStationPosition() {
+      var lo = new T.Geolocation();
+      var _this = this;
+      lo.getCurrentPosition(function(e) {
+        // 反编码
+        var geocode = new T.Geocoder();
+        geocode.getLocation(e.lnglat, function(result) {
+          var addressComponent = result.getAddressComponent();
+          _this.address = addressComponent.city;
+          _this.$toast(addressComponent.city);
+        });
+      });
+    },
