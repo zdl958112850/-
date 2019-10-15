@@ -1,0 +1,23 @@
+<template>
+    <div class="role" :style="backgroundImg">
+    
+    </div>
+</template>
+ 
+<script>
+  export default{
+     data(){
+      return {
+         backgroundImg:{
+              backgroundImage:"url("+require("@/assets/images/teacherIndex/bg.png")+")",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "100% 100%",
+              marginTop: "5px",
+            },
+        }
+    }
+   }
+</script>
+————————————————
+版权声明：本文为CSDN博主「&XYZ&」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/JEFF_luyiduan/article/details/94599809
