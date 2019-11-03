@@ -1,0 +1,19 @@
+css-auto-prefix，自动添加 CSS 私有前缀。
+Regex Previewer，实时预览正则表达式的效果。
+Turbo Console Log，快捷添加 console.log，一键 注释 / 启用 / 删除 所有 console.log。
+ctrl + alt + l 选中变量之后，使用这个快捷键生成 console.log
+alt + shift + c 注释所有 console.log
+alt + shift + u 启用所有 console.log
+alt + shift + d 删除所有 console.log
+
+CodeIf，CodeIf 是一个用来给变量命名的网站，你只要输入你想起的中文名，它就会给你提供很多建议的命名，可能很多人知道有 CodeIf 这么个网站，其实 VS Code 上有插件哦，是不是
+carbon-now-sh，将代码分享为图片（图片的格式可以为 png 和 svg），最最最重要的是： 图片逼格敲高 ↓↓↓
+
+vscode-fileheader  ctrl + alt + i 自定义作者
+
+vscode-json
+
+codelf  中文命名必备
+
+
+css-auto-prefix 自动添加css私有前缀
