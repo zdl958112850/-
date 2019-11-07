@@ -1,0 +1,27 @@
+let _this = this;
+// console.log(e)
+var imgFile = e.target.files[0]; // 获取图片文件
+var fr = new FileReader();       // 读取文件
+fr.onload = function () {        // 图片读取完成后
+    _this.imgBase64 = fr.result;			// 读取到的图片路径是Base64的
+    var img = document.getElementById('imgDom');    // 获取图片DOM
+    setTimeout(function(){                           // 因为获取数据会出现一点数据顺序问题  所以要做一下延迟
+        var w = img.naturalWidth;    // 获取Base64图片的原始图片大小
+        var h = img.naturalHeight;   
+        //生成canvas
+        var canvas = document.createElement('canvas');
+        var ctx = canvas.getContext('2d');    // 创建属性节点
+        var anw = document.createAttribute("width"); 
+        anw.nodeValue = w;
+        var anh = document.createAttribute("height");
+        anh.nodeValue = h;
+        canvas.setAttributeNode(anw);
+        canvas.setAttributeNode(anh);
+        ctx.drawImage(img, 0, 0, w, h);
+        // .7值越小，所绘制出的图像越模糊
+        _this.imgBase64 = canvas.toDataURL('image/jpeg',.7);
+    },100);
+};
+————————————————
+版权声明：本文为CSDN博主「猿小龙」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/qq_41988143/article/details/88311773
