@@ -37,7 +37,7 @@ export default {
   },
   created () {
     this.list = []
-    this.socket = io('http://ttapi.research.itcast.cn', {
+    this.socket = io('http://ttapi.research.cn', {
       query: {
         token: userLocal.getUser().token
       }
