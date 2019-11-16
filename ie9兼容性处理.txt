@@ -1,0 +1,7 @@
+ 1.不支持flex布局
+ 2.不支持跨域携带请求头。
+3.不支持 html5
+
+?4.上传文件后，若服务器返回 Content-type 为 application/json ,IE9会开启一个下载提示，问你是否下载该文件。解决办法就是修改 Content-type 为 text/html 或其他。
+5.不支持 placeholder 
+  6.不支持 Blob , 
