@@ -1,0 +1,30 @@
+/**使用场景主要是多个组件有相同的method和data等**/
+
+mixin.js
+
+let MIXIN = {
+   data() {
+       return {
+           name: 'mixin'
+       }
+   },
+   created() {
+       console.log('mixin...', this.name);
+   },
+   mounted() {},
+   methods: {}
+};
+export default MIXIN;
+
+
+
+引用mixin
+//全局引用
+import mixin from './mixin'
+Vue.mixin(mixin)
+
+//在vue文件中引用
+import '@/mixin'; // 引入mixin文件
+export default {
+   mixins: [mixin]
+}
