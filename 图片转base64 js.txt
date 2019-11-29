@@ -1,0 +1,17 @@
+getUrlBase64(url) {
+      return new Promise(resolve => {
+        let canvas = document.createElement('canvas')
+        let ctx = canvas.getContext('2d')
+        let img = new Image()
+        img.crossOrigin = 'Anonymous' //‘ –ÌøÁ”Ú
+        img.src = url
+        img.onload = function() {
+          canvas.height = 300
+          canvas.width = 300
+          ctx.drawImage(img, 0, 0, 300, 300)
+          let dataURL = canvas.toDataURL('image/png')
+          canvas = null
+          resolve(dataURL)
+        }
+      })
+    },
