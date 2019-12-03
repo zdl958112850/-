@@ -1,0 +1,11 @@
+// var _this = this;
+      this.$nextTick(() => {
+        console.log(this);
+        console.log("this", this.workFList);
+        if (this.workFList.length == 0) {
+          this.isQuit = true;
+          return this.$Message.info("暂无数据!");
+        }
+}
+
+这里如果将this给了 _this 将会出现拿不到数据, 

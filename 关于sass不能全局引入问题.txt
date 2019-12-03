@@ -1,0 +1,29 @@
+
+慕虎7371278
+在main.js引入 scss文件
+
+1.添加依赖
+
+
+
+npm install sass-resources-loader --save-dev
+
+2.修改build/utils.js
+
+
+
+scss: generateLoaders('sass').concat(
+
+      {
+
+        loader: 'sass-resources-loader',
+
+        options: {
+
+          resources: path.resolve(__dirname, '../src/assets/your.scss')
+
+        }
+
+      }
+
+    )
