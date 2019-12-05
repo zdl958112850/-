@@ -1,0 +1,1 @@
+query路由跳转参数不会丢失, 如果有object可以通过JSON.stringify 来进行转换, 但是注意是 query : { key: {} }这样的形式

@@ -1,0 +1,6 @@
+beforeRouteEnter (to, from, next) {
+      next(vm => {
+        //   let query =  JSON.parse(to.query)
+          console.log("TCL: beforeRouteEnter -> to.query", to.query.query)
+      })
+  },
