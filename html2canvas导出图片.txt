@@ -1,0 +1,10 @@
+html2canvas(document.body, {
+        onrendered: function(canvas) {
+          var url = canvas.toDataURL();//Õº∆¨µÿ÷∑
+          this.imgdownsrc = url
+          console.log(url);
+          document.body.appendChild(canvas);
+        },
+        width: 300,
+        height: 300
+      });
