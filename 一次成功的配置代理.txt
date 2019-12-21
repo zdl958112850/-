@@ -1,0 +1,44 @@
+在vue.config.js中写 
+module.exports = {
+    //...
+    devServer: {
+      proxy: {
+        '/api': {
+          target: 'http://yapi.demo.qunar.com/mock/41160',
+          pathRewrite: {'^/api' : ''},
+          changeOrigin: true,     // target是域名的话，需要这个参数，
+          secure: false,          // 设置支持https协议的代理
+        },
+        // '/api2': {
+        //     .....
+        // }
+      }
+    }
+  };
+
+
+在请求地址里面写
+
+/**
+ * 封装axios
+ */
+import axios from 'axios';
+import { Dialog } from 'vant';
+import Vue from 'vue';
+import { Toast } from 'vant';
+
+Vue.use(Toast);
+
+
+const request = axios.create({
+
+  baseURL: '/api'
+  // baseURL: 'http://192.168.1.17:8888/app/v1'
+  // baseURL: ''
+});
+request.defaults.withCredentials = true;
+
+
+
+
+其余地方不变， 就只需要改变baseURL既可以
