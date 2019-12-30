@@ -1,0 +1,6 @@
+https://www.jianshu.com/p/fde85549e3b0
+
+
+ beforeDestroy () {
+    bus.$off('get', this.myhandle)
+  },
