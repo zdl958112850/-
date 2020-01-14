@@ -1,0 +1,34 @@
+export function getFormList(type, studyIds) {
+return new Promise((resolve, reject) => {
+getFormDisplayConfiguration(type, studyIds).then(response => {
+const formData = response.data.forms
+
+const promises = []
+includeListOptions = true
+formData.forEach(item => {
+const promise = request({
+url: `/api/formDefinition/${item.formExternalId}?includeListOptions=${includeListOptions}`,
+method: 'get'
+})
+promises.push(promise)
+})
+
+Promise.all(promises).then(res => {
+if (res.length === promises.length) {
+res.formConfig = formData
+resolve(res)
+} else {
+reject(res)
+}
+}).catch(err => {
+reject(err)
+})
+}).catch(err => {
+console.log(err)
+reject('assign error')
+})
+})
+}
+————————————————
+版权声明：本文为CSDN博主「lanyan1214」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/lanyan1214/article/details/84922386

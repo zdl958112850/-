@@ -1,0 +1,6 @@
+ watch: {
+    $route(to, from) {
+      this.dryingDetails();
+      this.equipmentList();
+    }
+  },

@@ -1,0 +1,15 @@
+watch: {
+    "webVideo.lastArr": {
+      handler: function(n, o)  {
+        console.log("TCL: created -> this", this)
+        if (n.length != 0) {
+          this.arr = n;
+          this.arr.forEach((item, index) => {
+            item.startTime = this.handleTime(item.startTime);
+            item.endTime = this.handleTime(item.endTime);
+          });
+          this.$emit("getList", this.arr);
+        }
+      },
+      deep: true
+    }

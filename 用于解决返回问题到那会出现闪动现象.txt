@@ -1,0 +1,10 @@
+beforeRouteEnter(to, from, next) {
+    next(vm => {
+      let path = vm.$store.state.hisPath;
+      let length = window.history.length;
+      vm.$router.go(-(length - 1)); // 进去了, 然后跳转的时候
+      setTimeout(() => {
+        vm.$router.replace(path);
+      }, 10);
+    });
+  },
