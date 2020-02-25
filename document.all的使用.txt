@@ -1,0 +1,46 @@
+document.all用法 
+一.
+
+document.all是页面内所有元素的一个集合。例如：      
+document.all(0)表示页面内第一个元素
+二.
+document.all可以判断浏览器是否是IE  
+if(document.all)
+
+{  
+    alert("is   IE!");  
+}
+三.
+也可以通过给某个元素设置id属性（id=aaaa）,然后用document.all.aaaa调用该元素
+四.
+案例：
+
+代码1:    
+  <input   name=aaa   value=aaa>  
+  <input   id=bbb   value=bbb>   
+  <script   language=Jscript>  
+      alert(document.all.aaa.value)     //根据name取value  
+      alert(document.all.bbb.value)     //根据id取   value  
+  </script>    
+代码2：  
+但是常常name可以相同(如:用checkbox取用户的多项爱好的情况)   
+  <input   name=aaa   value=a1>  
+  <input   name=aaa   value=a2>  
+  <input   id=bbb   value=bbb>  
+  <script   language=Jscript>  
+      alert(document.all.aaa(0).value)     //显示a1  
+      alert(document.all.aaa(1).value)     //显示a2  
+      alert(document.all.bbb(0).value)     //这行代码会失败 
+  </script>    
+代码3：  
+理论上一个页面中的id是互不相同的，如果出现不同tags有相同的id  
+  document.all.id   就会失败,就象这样：  
+  <input   id=aaa   value=a1>  
+  <input   id=aaa   value=a2>  
+  <script   language=Jscript>  
+      alert(document.all.aaa.value)     //显示   undefined   而不是   a1或者a2 
+  </script>  
+
+　也就是说document.all[]是文档中所有标签组成的一个数组变量，
+包括了文档对象中所有元素
+　document.all[]这个数组可以访问文档中所有元素。

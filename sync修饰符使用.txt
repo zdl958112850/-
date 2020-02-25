@@ -1,0 +1,2 @@
+使用了sync 之后也不能直接修改传过来的值, 而是通过触发update 事件来修改
+ this.$emit('update:logoutShow',false)
