@@ -1,0 +1,142 @@
+https://www.cnblogs.com/xuqp/p/9406971.html
+
+Vue2.0学习笔记：Vue事件修饰符的使用
+事件处理
+     如果需要在内联语句处理器中访问原生DOM事件。可以使用特殊变量$event，把它传入到methods中的方法中。
+
+     在Vue中，事件修饰符处理了许多DOM事件的细节，让我们不再需要花大量的时间去处理这些烦恼的事情，而能有更多的精力专注于程序的逻辑处理。在Vue中事件修饰符主要有：
+
+.stop：等同于JavaScript中的event.stopPropagation()，防止事件冒泡
+.prevent：等同于JavaScript中的event.preventDefault()，防止执行预设的行为（如果事件可取消，则取消该事件，而不停止事件的进一步传播）
+.capture：与事件冒泡的方向相反，事件捕获由外到内
+.self：只会触发自己范围内的事件，不包含子元素
+.once：只会触发一次
+.stop 防止事件冒泡
+冒泡事件：嵌套两三层父子关系，然后所有都有点击事件，点击子节点，就会触发从内至外  子节点-》父节点的点击事件
+
+复制代码
+<!-- HTML --> 
+<div id="app"> 
+　　<div class="outeer" @click="outer"> 
+　　　　<div class="middle" @click="middle"> 
+　　　　　　<button @click="inner">点击我(^_^)</button>
+ 　　　　</div>
+ 　　</div> 
+　　<p>{{ message }}</p> 
+</div>
+ let app = new Vue({
+ 　　el: '#app', 
+　　 data () { 
+　　　　return { message: '测试冒泡事件' } }, 
+　　methods: { 
+　　　　inner: function () {
+　　　　　　 this.message = 'inner： 这是最里面的Button' 
+　　　　}, 
+　　　　middle: function () { 
+　　　　　　this.message = 'middle: 这是中间的Div' 
+　　　　}, 
+　　　　outer: function () { 
+　　　　　　this.message = 'outer: 这是外面的Div' 
+　　　　} 
+　　} 
+})
+复制代码
+防止冒泡事件的写法是：在点击上加上.stop相当于在每个方法中调用了等同于event.stopPropagation()，点击子节点不会捕获到父节点的事件
+
+复制代码
+<!-- HTML --> 
+<div id="app"> 
+　　<div class="outeer" @click.stop="outer"> 
+　　　　<div class="middle" @click.stop="middle"> 
+　　　　　　<button @click.stop="inner">点击我(^_^)</button>
+ 　　　　</div>
+ 　　</div> 
+</div>
+复制代码
+.prevent取消默认事件
+.prevent等同于JavaScript的event.preventDefault()，用于取消默认事件。比如我们页面的<a href="#">标签，当用户点击时，通常在浏览器的网址列出#：
+
+.capture 捕获事件
+捕获事件：嵌套两三层父子关系，然后所有都有点击事件，点击子节点，就会触发从外至内  父节点-》子节点的点击事件
+
+复制代码
+<!-- HTML --> 
+<div id="app"> 
+　　<div class="outeer" @click.capture="outer"> 
+　　　　<div class="middle" @click.capture="middle"> 
+　　　　　　<button @click.capture="inner">点击我(^_^)</button>
+ 　　　　</div>
+ 　　</div> 
+</div>
+复制代码
+
+
+ 
+
+.self
+修饰符.self只会触发自己范围内的事件，不会包含子元素。
+
+复制代码
+<!-- HTML --> 
+<div id="app"> 
+　　<div class="outeer" @click.self="outer"> 
+　　　　<div class="middle" @click.self="middle"> 
+　　　　　　<button @click.stop="inner">点击我(^_^)</button>
+ 　　　　</div>
+ 　　</div> 
+</div>
+复制代码
+Vue的Methods和事件处理
+
+.once 只执行一次点击
+如果我们在@click事件上添加.once修饰符，只要点击按钮只会执行一次。
+
+键盘修饰符
+在JavaScript事件中除了前面所说的事件，还有键盘事件，也经常需要监测常见的键值。在Vue中允许v-on在监听键盘事件时添加关键修饰符。记住所有的keyCode比较困难，所以Vue为最常用的键盘事件提供了别名：
+
+.enter：回车键
+.tab：制表键
+.delete：含delete和backspace键
+.esc：返回键
+.space: 空格键
+.up：向上键
+.down：向下键
+.left：向左键
+.right：向右键
+
+
+鼠标修饰符
+鼠标修饰符用来限制处理程序监听特定的滑鼠按键。常见的有：
+
+.left：鼠标左键
+.middle：鼠标中间滚轮
+.right：鼠标右键
+修饰键
+可以用如下修饰符开启鼠标或键盘事件监听，使在按键按下时发生响应：
+
+.ctrl
+.alt
+.shift
+.meta
+自定义按键修饰符别名
+在Vue中可以通过config.keyCodes自定义按键修饰符别名。例如，由于预先定义了keycode 116（即F5）的别名为f5，因此在文字输入框中按下F5，会触发prompt方法，出现alert。
+
+复制代码
+<!-- HTML -->
+<div id="app">
+    <input type="text" v-on:keydown.f5="prompt()">
+</div>
+
+Vue.config.keyCodes.f5 = 116;
+
+let app = new Vue({
+    el: '#app',
+    methods: {
+        prompt: function() {
+            alert('我是 F5！');
+        }
+    }
+});
+复制代码
+总结
+在Vue中，使用v-on来给元素绑定事件，而为了更好的处理逻辑方面的事物，Vue提供了一个methods。在methods中定义一些方法，这些方法可以帮助我们处理一些逻辑方面的事情。而在这篇文章中，我们主要介绍了一些事件的修饰符，比如常见的阻止事件冒泡，键盘修饰符等。除此之外，还提供了config.keyCodes提供自定义按键修饰符别名。

@@ -1,0 +1,32 @@
+https://blog.csdn.net/qq_39198420/article/details/77941079
+
+.haorooms {
+    position:relative;
+    display:inline-block;
+    font-size:80px; /*  任何宽度都可以 */
+    color: black; /* 任何颜色，或透明 */
+    overflow:hidden;
+    white-space: pre; /* 处理空格 */
+}
+.haorooms:before {
+    display:block;
+    z-index:1;
+    position:absolute;
+    top:0;
+    left:0;
+    width: 50%;
+    content: attr(data-content); /* 伪元素的动态获取内容 */
+    overflow:hidden;
+    color: #f00;
+}
+
+
+
+
+/* 另外还可以用来模拟  placeholder效果**/
+[contentEditable].empty:before{
+	position: absolute;
+	content: attr(placeholder);
+	color: gray;
+}
+

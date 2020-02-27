@@ -1,0 +1,16 @@
+
+ if (document.all) {
+      /**ie */
+      let input = document.querySelectorAll("input");
+      input.forEach((item, index) => {
+        var placeholderValue;
+        placeholderValue = item.getAttribute("placeholder"); //»º´æÄ¬ÈÏµÄplaceholderÖµ
+        item.value = placeholderValue;
+        item.addEventListener("focus", () => {
+          item.value == placeholderValue ? item.value = "" : '';
+        });
+        item.addEventListener("blur", () => {
+          item.value == "" ? item.value = placeholderValue : "";
+        });
+      });
+    }
