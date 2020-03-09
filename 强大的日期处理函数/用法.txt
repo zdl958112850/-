@@ -1,0 +1,2 @@
+1. import {formatDate} from;
+2. formatDate(new Date(val), "yyyy-MM-dd")

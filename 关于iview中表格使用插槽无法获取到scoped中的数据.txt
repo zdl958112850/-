@@ -1,0 +1,30 @@
+https://blog.csdn.net/Cookysurongbin/article/details/103718735  主要介绍使用render函数来解决该问题
+
+
+https://segmentfault.com/q/1010000019972703
+
+
+实际问题: 
+封装的Itable.vue 是基于iview中的table第二次封装
+<i-table
+      ref="table"
+      :content="self"
+      border
+      stripe
+      :columns="getClubColumns"
+      :data=" data"
+      tooltip-theme="dark"
+    >
+      <div @click="ceshi(index)" slot-scope="{ row, index }" slot="action">
+        <slot></slot>
+      </div>
+    </i-table>
+
+该文件是项目需求文件: 
+<Itable :getClubColumns="getClubColumns" :data="data">
+         <template slot-scope="{ row, index }" >
+            <Button  size="small" style="margin-right: 5px" @click="show(index)">实时监测</Button>
+            <Button size="small" @click="remove(row)">实景监控</Button>
+          </template>
+      </Itable>
+主要问题使用slot插进去的时候拿不到scope, 
