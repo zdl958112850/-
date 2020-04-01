@@ -1,0 +1,1 @@
+object is not function 是由于引入的那里面就有没他, 就是undefined, 然后把它当函数使用就会报错

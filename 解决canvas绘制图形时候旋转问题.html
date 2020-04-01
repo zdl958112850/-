@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=" utf-8">
+    <meta name="author" content="http://www.softwhy.com/" />
+    <title>蚂蚁部落</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            let cvs = document.getElementById("ant");
+            let ctx = cvs.getContext("2d");
+
+            ctx.translate(100, 50);  // 移动画布的原点到 100, 50 位置
+            let angle = 90;
+            ctx.save();
+
+            var img = new Image();
+            img.src = './ces.png';
+            img.onload = () => { 
+                {   // 绘制之前画布的原点已经在100. 50的位置, 此时应该再移动到图片的中心点再进行旋转
+                    ctx.translate(40, 30);
+                    ctx.rotate(angle * Math.PI / 180);
+                    ctx.drawImage(
+                        img,
+                        -40,
+                        -30,
+                        80,
+                        60
+                    );
+                    ctx.restore();
+                    ctx.moveTo(0, 0 );
+                    ctx.lineTo(100, 100)
+                    ctx.stroke();
+                }
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <canvas width="1200" height="1200" id="ant"></canvas>
+</body>
+
+</html>

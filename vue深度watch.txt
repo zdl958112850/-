@@ -1,0 +1,8 @@
+watch:{
+            students:{
+                handler(){
+                    localStorage.setItem('student',JSON.stringify(this.students))
+                },
+                deep:true,
+            }
+        },

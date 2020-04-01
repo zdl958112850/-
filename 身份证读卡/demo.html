@@ -1,0 +1,425 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+  <title>身份证阅读器接入测试页面</title>
+
+  <script type="text/javascript">
+
+    function toJson(str) {
+
+      //var obj = JSON.parse(str);
+
+      //return obj;
+
+      return eval('(' + str + ')');
+
+    }
+    /*清除表单*/
+    function clearForm() {
+
+      document.getElementById("timeElapsed").value = "";
+
+      document.getElementById("partyName").value = "";
+
+      document.getElementById("gender").value = "";
+
+      document.getElementById("nation").value = "";
+
+      document.getElementById("bornDay").value = "";
+
+      document.getElementById("certAddress").value = "";
+
+      document.getElementById("certNumber").value = "";
+
+      document.getElementById("certOrg").value = "";
+
+      document.getElementById("effDate").value = "";
+
+      document.getElementById("expDate").value = "";
+
+      document.getElementById("handjpg").src = "";
+
+      document.getElementById("result").value = "";
+
+      PicFront.src = "";
+
+      PicBack.src = "";
+
+    }
+    /**建立连接*/
+    function connect() {
+
+      clearForm();
+      var result = CertCtl.connect();
+
+      document.getElementById("result").value = result;
+
+    }
+    /**断开连接*/
+    function disconnect() {
+
+      clearForm();
+
+
+      // var CertCtl = document.getElementById("CertCtl");
+
+      var result = CertCtl.disconnect();
+
+      document.getElementById("result").value = result;
+
+    }
+    /**获取状态*/
+    function getStatus() {
+
+      clearForm();
+
+
+      // var CertCtl = document.getElementById("CertCtl");
+
+      var result = CertCtl.getStatus();
+
+      document.getElementById("result").value = result;
+
+    }
+    /**读卡*/
+    function readCert() {
+
+      clearForm();
+
+
+      // var CertCtl = document.getElementById("CertCtl");
+
+
+      var startDt = new Date();
+
+      var result = CertCtl.readCert();
+
+      var endDt = new Date();
+
+
+      document.getElementById("timeElapsed").value = (endDt.getTime() - startDt.getTime()) + "毫秒";
+
+      document.getElementById("result").value = result;
+
+
+      var resultObj = toJson(result);
+
+      if (resultObj.resultFlag == 0) {
+
+        document.getElementById("partyName").value = resultObj.resultContent.partyName;
+
+        document.getElementById("gender").value = resultObj.resultContent.gender;
+
+        document.getElementById("nation").value = resultObj.resultContent.nation;
+
+        document.getElementById("bornDay").value = resultObj.resultContent.bornDay;
+
+        document.getElementById("certAddress").value = resultObj.resultContent.certAddress;
+
+        document.getElementById("certNumber").value = resultObj.resultContent.certNumber;
+
+        document.getElementById("certOrg").value = resultObj.resultContent.certOrg;
+
+        document.getElementById("effDate").value = resultObj.resultContent.effDate;
+
+        document.getElementById("expDate").value = resultObj.resultContent.expDate;
+
+        document.getElementById("handjpg").src = "data:image/jpeg;base64," + resultObj.resultContent.identityPic;
+
+        PicFront.src = "data:image/jpeg;base64," + resultObj.resultContent.base64ID_PicFront;
+
+        PicBack.src = "data:image/jpeg;base64," + resultObj.resultContent.base64ID_PicBack;
+
+      }
+
+    }
+
+  </script>
+
+
+  <style type="text/css">
+    .style1 {
+
+      height: 81px;
+
+      width: 622px;
+
+    }
+  </style>
+
+</head>
+
+<body bgcolor="#D2F0FF">
+
+  <h1 style="text-align: center; color: #5555FF;">
+
+    身份证阅读器USB接入测试页面</h1>
+
+  <table border="0" width="50%" cellpadding="0" cellspacing="0" style="padding-left: 100px;">
+
+    <tr>
+
+      <td>
+
+        <input type="button" value="连接" onclick="connect()">
+
+      </td>
+
+      <td>
+
+        <input type="button" value="状态" onclick="getStatus()">
+
+      </td>
+
+      <td>
+
+        <input type="button" value="读卡" onclick="readCert()">
+
+      </td>
+
+      <td>
+
+        <input type="button" value="断开" onclick="disconnect()">
+
+      </td>
+
+      <td>
+
+        &nbsp;
+
+      </td>
+
+    </tr>
+
+  </table>
+
+  <table style="width: 92%;" align="center">
+
+    <tr>
+
+      <td class="style1">
+
+        <img id="handjpg" alt="" src="" style="height: 126px; width: 102px" />
+
+        <img id="PicFront" name="PicFront" alt="" src="" style="height: 209px; width: 327px" />
+
+
+
+        <img id="PicBack" name="PicBack" alt="" src="" style="height: 209px; width: 327px" />
+
+      </td>
+
+    </tr>
+
+  </table>
+
+  <table border="0" width="100%" cellpadding="0" cellspacing="10">
+
+    <tr>
+
+      <td align="right">
+
+        读卡时间：
+
+      </td>
+
+      <td>
+
+        <input type="text" id="timeElapsed" size="49" style="width: 400px;" readonly="readonly">
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td align="right">
+
+        姓名：
+
+      </td>
+
+      <td>
+
+        <input type="text" id="partyName" size="49" style="width: 400px;" readonly="readonly">(要求中间，两头都没有空格)
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td align="right">
+
+        性别：
+
+      </td>
+
+      <td>
+
+        <input type="text" id="gender" size="49" style="width: 400px;" readonly="readonly">(取值为“1”（表示“男”）或“0”（表示“女”）)
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td align="right">
+
+        民族：
+
+      </td>
+
+      <td>
+
+        <input type="text" id="nation" size="49" style="width: 400px;" readonly="readonly">(汉字即可)
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td align="right">
+
+        出生日期：
+
+      </td>
+
+      <td>
+
+        <input type="text" id="bornDay" size="49" style="width: 400px;" readonly="readonly">(要求格式为:yyyyMMdd，长度为8)
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td align="right">
+
+        住址：
+
+      </td>
+
+      <td>
+
+        <input type="text" id="certAddress" size="49" style="width: 400px;" readonly="readonly">
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td align="right">
+
+        身份证号：
+
+      </td>
+
+      <td>
+
+        <input type="text" id="certNumber" size="49" style="color: #FF0000; width: 400px;"
+          readonly="readonly">(居民身份号码，长度18位)
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td align="right">
+
+        签发机关：
+
+      </td>
+
+      <td>
+
+        <input type="text" id="certOrg" size="49" style="width: 400px;" readonly="readonly">
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td align="right">
+
+        开始期限：
+
+      </td>
+
+      <td>
+
+        <input type="text" id="effDate" size="49" style="width: 400px;" readonly="readonly">(要求格式为:yyyyMMdd，长度为8)
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td align="right">
+
+        结束期限：
+
+      </td>
+
+      <td>
+
+        <input type="text" id="expDate" size="49" style="width: 400px;"
+          readonly="readonly">(要求格式为:yyyyMMdd，长度为8，或者是“长期”)
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td align="right">
+
+        结果：
+
+      </td>
+
+      <td>
+
+        <textarea id="result" rows="8" cols="47" style="width: 400px;" readonly="readonly"></textarea>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td>
+
+      </td>
+
+      <td>
+
+
+
+      </td>
+
+    </tr>
+
+  </table>
+
+  <object id="CertCtl" name="CertCtl" type="application/cert-reader" width="0" height="0">
+
+    该浏览器不支持身份证阅读器控件！
+
+  </object>
+
+</body>
+
+</html>

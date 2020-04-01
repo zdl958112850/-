@@ -1,0 +1,8 @@
+在需要使用的地方这样引入, 而不是直接在main.js 中引入
+
+  // 引入 ECharts 主模块
+  var echarts = require('echarts/lib/echarts');
+  // 引入折线图
+  require('echarts/lib/chart/line');
+  // 引入提示框和标题组件
+  require('echarts/lib/component/title');
