@@ -1,0 +1,39 @@
+- 作用: 
+  - 模拟数据, 拦截 Ajax 请求
+- 使用方式: 
+- ![image-20200406212104458](mock.assets/image-20200406212104458.png)
+- cnpm i mockjs  安装mockjs
+- ![image-20200406212236203](mock.assets/image-20200406212236203.png)
+- ![image-20200406212320724](mock.assets/image-20200406212320724.png) 生产四个 哎呦 的字符串
+- ![image-20200406212406541](mock.assets/image-20200406212406541.png) 生成中文文字
+- ![image-20200406212430755](mock.assets/image-20200406212430755.png) 生成3-10范围的文本,  只有三表示只生成3个长度的
+- ![image-20200406212655249](mock.assets/image-20200406212655249.png) 生成title 和句子
+- ![image-20200406212733508](mock.assets/image-20200406212733508.png) 生成一个段落
+- ![image-20200406212748533](mock.assets/image-20200406212748533.png) 表示生成五句段落
+- ![image-20200406212829793](mock.assets/image-20200406212829793.png) 生成1-100之间的随机数
+- ![image-20200406212912835](mock.assets/image-20200406212912835.png) 生成一个增量的
+- ![image-20200406213011652](mock.assets/image-20200406213011652.png) 生成姓名, 身份证, 地址
+- 生成图片
+- ![image-20200406213127822](mock.assets/image-20200406213127822.png)
+- ![image-20200406213229118](mock.assets/image-20200406213229118.png) 大小, 背景色, 前景色, 格式, 图片文字
+- ![image-20200406213351504](mock.assets/image-20200406213351504.png) 生成时间
+- ![image-20200406213548789](mock.assets/image-20200406213548789.png) 生成一个list的数组, 8 个元素, 可以不固定长度
+- ![image-20200406213812157](mock.assets/image-20200406213812157.png) 定义一个接口, get请求
+- ![image-20200406214006157](mock.assets/image-20200406214006157.png) 直接通过axios 发送请求
+- ![image-20200406214527157](mock.assets/image-20200406214527157.png) 常用的方式
+- ![image-20200406215646836](mock.assets/image-20200406215646836.png) 去main.js中引入
+- 根据后台返回的类型
+- ![image-20200406215836984](mock.assets/image-20200406215836984.png) 较为完成的mockjs
+- ![image-20200406220024904](mock.assets/image-20200406220024904.png) 通过get 中params 传参, get中使用的是params , post 使用的是data 
+- ![image-20200406220112788](mock.assets/image-20200406220112788.png) 会出现该问题, 地址不对应了
+- ![image-20200406220221172](mock.assets/image-20200406220221172.png) 通过正则的方式来改写之前的地址
+- ![image-20200406220318197](mock.assets/image-20200406220318197.png) 获取到query参数
+- ![image-20200406220355040](mock.assets/image-20200406220355040.png) 获取query参数的方式, 手动写
+- ![image-20200406220720698](mock.assets/image-20200406220720698.png) 获取query方法
+- ![image-20200406221205198](mock.assets/image-20200406221205198.png) 实现分页, 截取数据
+- ![image-20200406221325511](mock.assets/image-20200406221325511.png) 
+- post请求的
+- ![image-20200406221915709](mock.assets/image-20200406221915709.png) 通过post 实现添加功能
+- ![image-20200406222144197](mock.assets/image-20200406222144197.png) mock模拟post请求, 获取body参数
+-  删除的模拟
+- ![image-20200406222713718](mock.assets/image-20200406222713718.png) 通过mock 实现删除
