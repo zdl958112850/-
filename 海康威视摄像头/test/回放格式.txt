@@ -1,0 +1,3 @@
+rtsp://192.0.1.100:554/Streaming/tracks/101?starttime=20120802t063812z&endtime=20120802t064816z
+
+表示以单播形式回放通道1 中的录像文件，时间范围是starttime 到endtime，其中starttime 和endtime 的格式要符合ISO 8601 。具体格式是YYYYMMDD”T”HHmmSS.fraction”Z” ，Y 是年，M 是月，D 是日，T 是时间分格符，H 是小时，M 是分，S 是秒，Z 是可选的、表示Zulu (GMT) 时间。
